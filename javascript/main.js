@@ -50,8 +50,29 @@ const $plus = document.querySelector('.js-plus');
 const $minus = document.querySelector('.js-minus');
 const $content = document.querySelector('.js-content');
 
+const openAccordion = () => {
+    removeClass($content, 'hidden');
+    removeClass($minus, 'hidden');
+    addClass($plus, 'hidden');
+    isCurrentlyOpen = true;    
+}
+
+const closeAccordion = () => {
+    addClass($content, 'hidden');
+    addClass($minus, 'hidden');
+    removeClass($plus, 'hidden');
+    isCurrentlyOpen = false;
+}
+
 const onExpanderClicked = (e) => {
-    console.log('hello, wrold!');
+    if (isCurrentlyOpen === false) {
+        openAccordion();
+    }   
+    else {
+        closeAccordion(); 
+    }
 }
 
 $expander.addEventListener('click', onExpanderClicked);
+
+
